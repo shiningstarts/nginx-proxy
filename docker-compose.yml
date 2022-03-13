@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  proxy:
+    image: nginx:alpine
+    container_name: proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d:rw,shared
+      - ./logs:/opt/logs:rw,shared
+      - ./ssl:/etc/nginx/ssl:rw,shared
